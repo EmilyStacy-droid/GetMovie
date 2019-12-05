@@ -27,5 +27,8 @@ public class MovieRepository {
         return movies;
     }
 
+    public Movie getMovie(Integer id) {
+        return movies.get(id);
+    }
 
 }
