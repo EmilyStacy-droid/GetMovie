@@ -22,13 +22,13 @@ private MovieRepository movieRepository;
 //        return "redirect:/home";
 //    }
 
-    @RequestMapping(value="/movies", method= RequestMethod.GET)
+    @RequestMapping(value="/api", method= RequestMethod.GET)
     public List<Movie> home(ModelMap model, Principal principal) {
        return movieRepository.getMovies();
 
     }
 
-    @GetMapping("/movie/{id}")
+    @GetMapping("/api/{id}")
     public Movie movie (@PathVariable int id){
         if(id > 0) {
         return movieRepository.getMovie(id-1);
