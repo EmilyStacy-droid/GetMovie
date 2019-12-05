@@ -24,7 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'//runtime implementation; won't be seen while writing codes; this is an artifact ID
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' //JSL dependency with tomcat
     implementation 'javax.servlet:jstl:1.2'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
