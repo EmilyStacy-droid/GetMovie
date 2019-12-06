@@ -38,7 +38,7 @@ public class JPAConfiguration {
         if( dataSource == null ) {
             DriverManagerDataSource dmDataSource = new DriverManagerDataSource();
             dmDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            dmDataSource.setUrl("jdbc:mysql://localhost:3306/tag?serverTimezone=UTC");
+            dmDataSource.setUrl("jdbc:mysql://localhost:3306/improving?serverTimezone=UTC");
             dmDataSource.setUsername("EmilyStacylocal");
             dmDataSource.setPassword("bootcamp2019Improving");
             dataSource = dmDataSource;
@@ -49,7 +49,7 @@ public class JPAConfiguration {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update"); // update for us is fine
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL55Dialect");
         return properties;
     }
 
