@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'war'
     id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
 group 'com.improving'
@@ -21,6 +22,8 @@ repositories{
 //}
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'mysql:mysql-connector-java'
     implementation 'org.springframework.boot:spring-boot-starter-web'//runtime implementation; won't be seen while writing codes; this is an artifact ID
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' //JSL dependency with tomcat
     implementation 'javax.servlet:jstl:1.2'
