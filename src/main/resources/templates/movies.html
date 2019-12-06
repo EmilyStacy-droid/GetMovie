@@ -13,9 +13,9 @@
 
 <h2> <span th:text ="test"> </span></h2>
 
-<span th:each= "movie: ${movies}">
-
- </span>
+<div th:each= "movie: ${movies}" th:text="${movie.movieTitle}">
+    
+ </div>
 
 
 </body>
