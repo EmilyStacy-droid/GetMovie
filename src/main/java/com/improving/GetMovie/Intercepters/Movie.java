@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Movie {
 
 @Id
-@GeneratedValue(strategy= GenerationType.AUTO)
+@GeneratedValue(strategy= GenerationType.IDENTITY)
 private Integer id;
 
 //@Column(name="movieTitle")
@@ -62,5 +62,25 @@ private String actors;
 
     public String getActors() {
         return actors;
+    }
+
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setMovieYear(Integer movieYear) {
+        this.movieYear = movieYear;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
     }
 }
