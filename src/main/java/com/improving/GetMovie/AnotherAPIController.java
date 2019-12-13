@@ -2,6 +2,7 @@ package com.improving.GetMovie;
 
 import com.improving.GetMovie.Intercepters.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -62,8 +63,8 @@ Optional<Movie> getAllById(@PathVariable Integer id){
         return ResponseEntity.ok(updatedMovie);
 
 }
-
-@DeleteMapping(path="/delete/movie/{id}")
+@ResponseStatus(HttpStatus.OK)
+@DeleteMapping(path="/movie/{id}/delete")
 
   public void deleteMovie(@PathVariable(value="id") Integer id) throws Exception {
 
