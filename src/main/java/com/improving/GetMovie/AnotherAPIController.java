@@ -1,38 +1,53 @@
 package com.improving.GetMovie;
 
 import com.improving.GetMovie.Intercepters.Movie;
-import com.improving.GetMovie.Intercepters.MovieRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
-import java.util.List;
+import javax.persistence.Id;
+import java.util.Optional;
 
-@RestController
+@Controller
+@RequestMapping(path="/api")
 public class AnotherAPIController {
-private MovieRepository movieRepository;
 
-    public AnotherAPIController(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
+    @Autowired
+    private MoviesRepository moviesRepository;
+
+    @GetMapping(path = "/movies")
+    public @ResponseBody
+    Iterable<Movie> getAllMovies() {
+
+        return moviesRepository.findAll();
     }
 
-//    @GetMapping("/")
-//    public String redirect(){
-//        return "redirect:/home";
-//    }
 
-    @RequestMapping(value="/api", method= RequestMethod.GET)
-    public List<Movie> home(ModelMap model, Principal principal) {
-       return movieRepository.getMovies();
-
-    }
-
-    @GetMapping("/api/{id}")
-    public Movie movie (@PathVariable int id){
-        if(id > 0) {
-        return movieRepository.getMovie(id-1);
+@GetMapping(path = "/movies/{id}")
+public @ResponseBody
+Optional<Movie> getAllById(@PathVariable Integer id){
+        if(id!=null) {
+        return moviesRepository.findById(id);
         }
-        return movieRepository.getMovie(0);
-    }
+        return null;
+}
+
+@RequestMapping(path="/movies/add", method = RequestMethod.POST)
+@ResponseBody
+    public void addMovie(@RequestParam(required=false, name = "movieTitle") String movieTitle, @RequestParam(name = "genre") String genre, @RequestParam(name = "country") String country, @RequestParam(required = true, name = "movieYear") String movieYear, @RequestParam(required = false, name = "actors") String actors) {
+       Movie movie = new Movie();
+        movie.setMovieTitle(movieTitle);
+        movie.setGenre(genre);
+        Integer movieYearint = Integer.parseInt(movieYear);
+        movie.setMovieYear(movieYearint);
+        movie.setCountry(country);
+        moviesRepository.save(movie);
+
+
+
+
+}
+
+
 }
