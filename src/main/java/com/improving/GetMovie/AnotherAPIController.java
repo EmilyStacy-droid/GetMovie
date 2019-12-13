@@ -37,8 +37,8 @@ Optional<Movie> getAllById(@PathVariable Integer id){
 
 @RequestMapping(path="/movie/add", method = RequestMethod.POST)
 @ResponseBody
-    public void addMovie(@RequestParam(required=false, name = "movieTitle") String movieTitle, @RequestParam(name = "genre") String genre, @RequestParam(name = "country") String country, @RequestParam(required = true, name = "movieYear") String movieYear, @RequestParam(required = false, name = "actors") String actors) {
-       Movie movie = new Movie();
+    public void addMovie(@RequestParam(required=true, name = "movieTitle") String movieTitle, @RequestParam(name = "genre") String genre, @RequestParam(name = "country") String country, @RequestParam(required = true, name = "movieYear") String movieYear, @RequestParam(required = false, name = "actors") String actors) {
+        Movie movie = new Movie();
         movie.setMovieTitle(movieTitle);
         movie.setGenre(genre);
         Integer movieYearint = Integer.parseInt(movieYear);
