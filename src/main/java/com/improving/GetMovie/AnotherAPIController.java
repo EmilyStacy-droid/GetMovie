@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Id;
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -58,6 +60,16 @@ Optional<Movie> getAllById(@PathVariable Integer id){
 
     final Movie updatedMovie = moviesRepository.save(movie);
         return ResponseEntity.ok(updatedMovie);
+
+}
+
+@DeleteMapping(path="/delete/movie/{id}")
+
+  public void deleteMovie(@PathVariable(value="id") Integer id) throws Exception {
+
+        Movie movie = moviesRepository.findById(id).orElseThrow(()-> new Exception("Movie not found with this id " + id));
+
+        moviesRepository.delete(movie);
 
 }
 
